@@ -1,21 +1,24 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import firebase from 'firebase'
 
-export default class App extends React.Component {
+import Home from './src/components/Home'
+
+import * as styles from './src/styles'
+
+
+export default class App extends Component {
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Welcome to Quotable!</Text>
+        <Home />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+/*
+Resources:
+ - https://github.com/davideast/firebase-react-native-sample
+*/
