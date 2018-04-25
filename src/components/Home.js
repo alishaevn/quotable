@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 
-import { firebaseConfig, firebaseApp } from '../config'
+import { firebaseApp } from '../config'
 import * as styles from '../styles'
 
 
