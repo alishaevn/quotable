@@ -1,11 +1,9 @@
 import React, { Component} from 'react'
 import { Text, View, TextInput, Button } from 'react-native'
 import firebase from 'firebase'
-// import firebaseui from 'firebaseui'
-
-
 
 import * as styles from '../styles'
+
 
 export default class Login extends Component {
   constructor() {
@@ -102,9 +100,9 @@ onRegister = () => {
 
 /*
  Resources:
- -https://blog.invertase.io/getting-started-with-firebase-authentication-on-react-native-a1ed3d2d6d91
+ - https://blog.invertase.io/getting-started-with-firebase-authentication-on-react-native-a1ed3d2d6d91
 
-  - https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#createUserWithEmailAndPassword
+ - https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#createUserWithEmailAndPassword
 
  - https://facebook.github.io/react-native/docs/components-and-apis.html
   
