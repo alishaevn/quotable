@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
+import { TabNavigator, TabBarBottom } from 'react-navigation'
+import { Ionicons } from 'react-native-vector-icons'
 
 import { firebaseApp } from '../config'
 import * as styles from '../styles'
 
-
-export default class Home extends Component {
+/* ======================
+ HOME COMPONENT
+ ====================== */
+class Home extends Component {
   constructor() {
     super()
     this.state = {
@@ -38,14 +42,59 @@ export default class Home extends Component {
   }
 }
 
-/*
 
-firebase-app - The core firebase client (required).
-firebase-auth - Firebase Authentication (optional).
-firebase-database - The Firebase Realtime Database (optional).
-firebase-firestore - Cloud Firestore (optional).
-firebase-storage - Cloud Storage (optional).
-firebase-messaging - Firebase Cloud Messaging (optional).
-firebase-functions - Cloud Functions for Firebase (optional).
+/* ======================
+ PROFILE COMPONENT
+ ====================== */
+class Profile extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Settings!</Text>
+      </View>
+    );
+  }
+}
+
+
+/* ======================
+ TABS
+ ====================== */
+export default TabNavigator(
+  {
+    Home: { screen: Home },
+    Profile: { screen: Profile },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+        if (routeName === 'Home') {
+          iconName = `ios-home${focused ? '' : '-outline'}`;
+        } else if (routeName === 'Profile') {
+          iconName = `ios-person${focused ? '' : '-outline'}`;
+        }
+
+        // You can return any component that you like here! We usually use an icon component from react-native-vector-icons
+        return <Ionicons name={iconName} size={25} color={tintColor} />;
+      },
+      }),
+      tabBarOptions: {
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray',
+      },
+      tabBarComponent: TabBarBottom,
+      tabBarPosition: 'bottom',
+      animationEnabled: false,
+      swipeEnabled: false,
+    });
+
+/*
+Resources: 
+ - https://reactnavigation.org/docs/tab-based-navigation.html
+ - https://oblador.github.io/react-native-vector-icons/
+ - http://discuss.nativebase.io/t/where-to-get-the-list-of-icon-names-used-in-native-base/37/8
+
 
 */
