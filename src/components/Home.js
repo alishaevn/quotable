@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import firebase from 'firebase'
 
-import { firebaseConfig } from '../config'
-
+import { firebaseConfig, firebaseApp } from '../config'
 import * as styles from '../styles'
 
 
@@ -17,7 +15,6 @@ export default class Home extends Component {
   }
   
   componentDidMount() {
-    const firebaseApp = firebase.initializeApp(firebaseConfig)
     const firebaseDb = firebaseApp.database().ref()
 
     firebaseDb.on('value', snap => {
