@@ -31,13 +31,12 @@ class Home extends Component {
     })
   }
 
-
   render() {
 
     return (
       <View style={styles.container}>
-        <Text>{this.state.quote}</Text>
-        <Text>{this.state.author}</Text>
+        <Text style={styles.quote}>{this.state.quote}</Text>
+        <Text style={styles.author}>{this.state.author}</Text>
       </View>
     );
   }
