@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import { TabNavigator, TabBarBottom } from 'react-navigation'
 import { Ionicons } from 'react-native-vector-icons'
+import firebase from 'firebase'
 
 import { firebaseApp } from '../config'
 import * as styles from '../styles'
@@ -50,7 +51,7 @@ class Profile extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Settings!</Text>
+        <Text onPress={() => firebase.auth().signOut()}>Sign Out</Text>
       </View>
     );
   }
