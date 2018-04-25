@@ -1,3 +1,9 @@
-export const API_KEY = process.env.API_KEY
-export const PROJECT_ID = process.env.PROJECT_ID
-export const MESSAGING_SENDER_ID = process.env.MESSAGING_SENDER_ID
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyCS6lttqUddFOl9WmbVR3uliYtjDs8SyRg",
+    authDomain: "quotable-97756.firebaseapp.com",
+    databaseURL: "https://quotable-97756.firebaseio.com",
+    projectId: "quotable-97756",
+    storageBucket: "quotable-97756.appspot.com",
+    messagingSenderId: "36011798297"
+  };
