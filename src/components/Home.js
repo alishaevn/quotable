@@ -23,18 +23,26 @@ class Home extends Component {
     const firebaseDb = firebaseApp.database().ref()
 
     firebaseDb.on('value', snap => {
-      const quoteObj =  snap.val()[0]
+      const qotd =  snap.val().qotd[0]
+
       this.setState({
-        quote: quoteObj.quote,
-        author: quoteObj.author
+        quote: qotd.quote,
+        author: qotd.author
       })
     })
   }
 
+  
   render() {
+    // const saveQuote = () => {
+  
+    // }
 
     return (
-      <View style={styles.container}>
+      <View 
+        style={styles.container}
+        onPress={() => this.saveQuote()}
+      >
         <Text style={styles.quote}>{this.state.quote}</Text>
         <Text style={styles.author}>{this.state.author}</Text>
       </View>
@@ -47,6 +55,11 @@ class Home extends Component {
  PROFILE COMPONENT
  ====================== */
 class Profile extends React.Component {
+  componentDidMount() {
+    const firebaseDb = firebaseApp.database().ref()
+
+    
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -95,6 +108,7 @@ Resources:
  - https://reactnavigation.org/docs/tab-based-navigation.html
  - https://oblador.github.io/react-native-vector-icons/
  - http://discuss.nativebase.io/t/where-to-get-the-list-of-icon-names-used-in-native-base/37/8
+ - https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#signOut
 
 
 */
