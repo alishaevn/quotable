@@ -20,10 +20,26 @@ class Home extends Component {
   }
   
   componentDidMount() {
+    const todayString = () => {
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth() + 1;
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+      return `${mm}/${dd}`;
+    };
+
+    const today = todayString()
     const firebaseDb = firebaseApp.database().ref()
 
     firebaseDb.on('value', snap => {
-      const qotd =  snap.val().qotd[0]
+      const qotd =  snap.val().qotd.find(obj => obj.date === today)
 
       this.setState({
         quote: qotd.quote,
