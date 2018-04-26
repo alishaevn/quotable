@@ -1,23 +1,28 @@
 {
   "qotd": [{
       "quote": "In quoting others, we cite ourselves.",
-      "author": "Julio Cortázar"
+      "author": "Julio Cortázar",
+      "date": "04/25"
     },
     {
       "quote": "Remember, we are our own griefs, my dear, we are our own happinesses and we are our own remedies.",
-      "author": "Huseyn Raza"
+      "author": "Huseyn Raza",
+      "date": "04/26"
     },
     {
       "quote": "Getting rid of a delusion makes us wiser than getting hold of a truth.",
-      "author": "Ludwig Börne"
+      "author": "Ludwig Börne",
+      "date": "04/27"
     },
     {
       "quote": "What is necessary to change a person is to change his awareness of himself.",
-      "author": "Abraham Maslow"
+      "author": "Abraham Maslow",
+      "date": "04/28"
     },
     {
       "quote": "Never give up on a dream just because of the time it will take to accomplish it. The time will pass anyway.",
-      "author": "Earl Nightingale"
+      "author": "Earl Nightingale",
+      "date": "04/29"
     }
   ]
 
