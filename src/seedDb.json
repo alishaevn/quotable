@@ -149,6 +149,10 @@
       "author": "Warren Buffett",
       "date": "05/24"
     }
-  ]
-
+  ],
+  "users": [{
+    "quote": "necessary to seed the db",
+    "author": "necessary to seed the db",
+    "uid": "qwerty12345"
+  }]
 }
