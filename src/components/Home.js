@@ -71,14 +71,29 @@ class Home extends Component {
  PROFILE COMPONENT
  ====================== */
 class Profile extends React.Component {
-  componentDidMount() {
-    const firebaseDb = firebaseApp.database().ref()
 
+  componentDidMount() {
     
   }
+
   render() {
+    const user = firebase.auth().currentUser
+    let name, email, photoUrl /* uid, emailVerified */
+
+    if (user !== null) {
+      name = user.displayName ? user.displayName : ''
+      email = user.email
+      photoUrl = user.photoURL ? user.photoURL : ''
+      // uid = user.uid
+      // emailVerified = user.emailVerified
+    }
+
     return (
       <View style={styles.container}>
+        <Text>Name: { name }</Text>
+        <Text>Email: { email}</Text>
+        <Text>Photo: { photoUrl }</Text>
+        <Text></Text>
         <Text onPress={() => firebase.auth().signOut()}>Sign Out</Text>
       </View>
     );
@@ -121,10 +136,16 @@ export default TabNavigator(
 
 /*
 Resources: 
- - https://reactnavigation.org/docs/tab-based-navigation.html
- - https://oblador.github.io/react-native-vector-icons/
- - http://discuss.nativebase.io/t/where-to-get-the-list-of-icon-names-used-in-native-base/37/8
- - https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#signOut
+  // HOME
+  - 
 
+  // PROFILE
+  - https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#signOut
+  - https://firebase.google.com/docs/auth/web/manage-users
+  
+  // TABS
+  - https://reactnavigation.org/docs/tab-based-navigation.html
+  - https://oblador.github.io/react-native-vector-icons/
+  - http://discuss.nativebase.io/t/where-to-get-the-list-of-icon-names-used-in-native-base/37/8
 
 */
