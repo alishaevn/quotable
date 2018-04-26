@@ -3,6 +3,7 @@ import { Text, View } from 'react-native'
 import { TabNavigator, TabBarBottom } from 'react-navigation'
 import { Ionicons } from 'react-native-vector-icons'
 import firebase from 'firebase'
+import DoubleClick from 'react-native-double-click'
 
 import { firebaseApp } from '../config'
 import * as styles from '../styles'
@@ -38,7 +39,7 @@ class Home extends Component {
     const today = todayString()
     const firebaseDb = firebaseApp.database().ref()
 
-    firebaseDb.on('value', snap => {
+    firebaseDb.on('value', snap => { // snap.val() will show me my current database
       const qotd =  snap.val().qotd.find(obj => obj.date === today)
 
       this.setState({
@@ -48,19 +49,24 @@ class Home extends Component {
     })
   }
 
-  
+  saveQuote = () => {
+    const uid = firebase.auth().currentUser.uid
+    
+    firebaseApp.database().ref().child('users').push({
+        quote: this.state.quote,
+        author: this.state.author,
+        uid
+      })
+  }
+
   render() {
-    // const saveQuote = () => {
-  
-    // }
 
     return (
-      <View 
-        style={styles.container}
-        onPress={() => this.saveQuote()}
-      >
-        <Text style={styles.quote}>{this.state.quote}</Text>
-        <Text style={styles.author}>{this.state.author}</Text>
+      <View style={styles.container} >
+        <DoubleClick onClick={() => this.saveQuote()} >
+          <Text style={styles.quote}>{ this.state.quote }</Text>
+          <Text style={styles.author}>{ this.state.author }</Text>
+        </DoubleClick>
       </View>
     );
   }
@@ -137,7 +143,7 @@ export default TabNavigator(
 /*
 Resources: 
   // HOME
-  - 
+  - https://www.npmjs.com/package/react-native-double-click
 
   // PROFILE
   - https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#signOut
