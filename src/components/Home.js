@@ -25,6 +25,7 @@ class Home extends Component {
   }
   
   componentDidMount() {
+    
     const todayString = () => {
       let today = new Date();
       let dd = today.getDate();
@@ -43,15 +44,31 @@ class Home extends Component {
     const today = todayString()
 
     firebaseDb.on('value', snap => { // snap.val() will show me my current database
+      // FIND THE QUOTE OF THE DAY
       const qotd =  snap.val().qotd.find(obj => obj.date === today)
 
       this.setState({
         quote: qotd.quote,
         author: qotd.author
       })
+
+      // CHECK TO SEE IF THE USER HAS LIKED THIS QUOTE
+      const uid = firebase.auth().currentUser.uid
+      let usersProp =  snap.val().users // entire users object
+      let objectToArray = Object.values(usersProp) // array of user objects
+      let userQuotes = objectToArray.filter(obj => obj.uid === uid) // array of objects that the user added
+      let found = userQuotes.find(obj => obj.quote === this.state.quote) // will be empty if the user hasn't liked the quote 
+
+      if (found !== []) {
+        this.setState({
+          clicked: true
+        })
+      }
+
     })
   }
 
+  // SAVE THE QUOTE TO THE DB WITH THE USER'S ID
   saveQuote = () => {
     const uid = firebase.auth().currentUser.uid
     
@@ -174,7 +191,7 @@ export default TabNavigator(
       swipeEnabled: false,
     });
 
-    
+
 /*
 Resources: 
   // HOME
