@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 import { TabNavigator, TabBarBottom } from 'react-navigation'
 import { Ionicons } from 'react-native-vector-icons'
 import firebase from 'firebase'
@@ -91,8 +91,8 @@ class Home extends Component {
     return (
       <View style={styles.container} >
         <DoubleClick onClick={() => this.saveQuote()} >
-          <Text style={styles.quote}>{ this.state.quote }</Text>
-          <Text style={styles.author}>{ this.state.author }</Text>
+          <Text style={styles.homeQuote}>{ this.state.quote }</Text>
+          <Text style={styles.homeAuthor}>{ this.state.author }</Text>
         </DoubleClick>
         <Ionicons name={iconName} size={25} />
       </View>
@@ -129,29 +129,34 @@ class Profile extends React.Component {
 
   render() {
     const user = firebase.auth().currentUser
-    let name, email, photoUrl 
+    let name, photoUrl /* email */
 
     if (user !== null) {
       name = user.displayName ? user.displayName : ''
-      email = user.email
       photoUrl = user.photoURL ? user.photoURL : ''
+      // email = user.email
     }
 
     // LIST EACH QUOTE INSIDE OF A VIEW
     let printToScreen = this.state.userQuotes.map((obj, index) => (
-        <View style={styles.container} key={index} >
-          <Text style={styles.quote}>{ obj.quote }</Text>
-          <Text style={styles.author}>{ obj.author }</Text>
+        <View style={styles.quoteBlock} key={index} >
+          <Text style={styles.profileQuote}>{ obj.quote }</Text>
+          <Text style={styles.profileAuthor}>{ obj.author }</Text>
       </View>
       ))
 
     return (
-      <View style={styles.container}>
-        <Text>Name: { name }</Text>
-        <Text>Email: { email}</Text>
-        <Text>Photo: { photoUrl }</Text>
-        { printToScreen }
+      <View style={styles.profile}>
         <Text onPress={() => firebase.auth().signOut()}>Sign Out</Text>
+        <Text>Name: { name }</Text>
+        {/* <Text>Email: { email}</Text> */}
+        <Text>Photo: { photoUrl }</Text>
+
+        <View style={styles.quotesBox}>
+          <ScrollView>
+            { printToScreen }
+          </ScrollView>
+        </View>
       </View>
     );
   }
