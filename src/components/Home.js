@@ -59,7 +59,7 @@ class Home extends Component {
       let userQuotes = objectToArray.filter(obj => obj.uid === uid) // array of objects that the user added
       let found = userQuotes.find(obj => obj.quote === this.state.quote) // will be empty if the user hasn't liked the quote 
 
-      if (found !== []) {
+      if (found) {
         this.setState({
           clicked: true
         })
@@ -87,6 +87,7 @@ class Home extends Component {
   render() {
 
     let iconName = this.state.clicked ? 'ios-heart' : 'ios-heart-outline'
+    let tintColor = this.state.clicked ? '#54F2F2' : ''
 
     return (
       <View style={styles.container} >
@@ -94,7 +95,7 @@ class Home extends Component {
           <Text style={styles.homeQuote}>{ this.state.quote }</Text>
           <Text style={styles.homeAuthor}>{ this.state.author }</Text>
         </DoubleClick>
-        <Ionicons name={iconName} size={25} />
+        <Ionicons name={iconName} size={25} color={tintColor}/>
       </View>
     );
   }
