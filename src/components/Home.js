@@ -8,6 +8,9 @@ import DoubleClick from 'react-native-double-click'
 import { firebaseApp } from '../config'
 import * as styles from '../styles'
 
+const firebaseDb = firebaseApp.database().ref()
+
+
 /* ======================
  HOME COMPONENT
  ====================== */
@@ -37,7 +40,6 @@ class Home extends Component {
     };
 
     const today = todayString()
-    const firebaseDb = firebaseApp.database().ref()
 
     firebaseDb.on('value', snap => { // snap.val() will show me my current database
       const qotd =  snap.val().qotd.find(obj => obj.date === today)
@@ -52,11 +54,12 @@ class Home extends Component {
   saveQuote = () => {
     const uid = firebase.auth().currentUser.uid
     
-    firebaseApp.database().ref().child('users').push({
+    firebaseDb.child('users').push({ 
         quote: this.state.quote,
         author: this.state.author,
         uid
       })
+    
   }
 
   render() {
@@ -77,29 +80,52 @@ class Home extends Component {
  PROFILE COMPONENT
  ====================== */
 class Profile extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      userQuotes: []
+    }
+  }
 
   componentDidMount() {
-    
+    // RETRIEVE USER'S QUOTES
+    firebaseDb.on('value', snap => { 
+      const uid = firebase.auth().currentUser.uid
+
+      let usersProp =  snap.val().users // entire users object
+      let objectToArray = Object.values(usersProp) // array of user objects
+      let userQuotes = objectToArray.filter(obj => obj.uid === uid) // array of objects that the user added
+
+      this.setState({
+        userQuotes
+      })
+    })
   }
 
   render() {
     const user = firebase.auth().currentUser
-    let name, email, photoUrl /* uid, emailVerified */
+    let name, email, photoUrl 
 
     if (user !== null) {
       name = user.displayName ? user.displayName : ''
       email = user.email
       photoUrl = user.photoURL ? user.photoURL : ''
-      // uid = user.uid
-      // emailVerified = user.emailVerified
     }
+
+    // LIST EACH QUOTE INSIDE OF A VIEW
+    let printToScreen = this.state.userQuotes.map((obj, index) => (
+        <View style={styles.container} key={index} >
+          <Text style={styles.quote}>{ obj.quote }</Text>
+          <Text style={styles.author}>{ obj.author }</Text>
+      </View>
+      ))
 
     return (
       <View style={styles.container}>
         <Text>Name: { name }</Text>
         <Text>Email: { email}</Text>
         <Text>Photo: { photoUrl }</Text>
-        <Text></Text>
+        { printToScreen }
         <Text onPress={() => firebase.auth().signOut()}>Sign Out</Text>
       </View>
     );
