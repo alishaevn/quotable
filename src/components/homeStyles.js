@@ -1,43 +1,8 @@
 const React = require('react-native')
 const { StyleSheet } = React
 
-const constants = {
-  actionColor: '#24CE84'
-};
 
 var styles = StyleSheet.create({
-  // LOGIN
-  loginPage: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // marginHorizontal: 30,
-    backgroundColor: '#042A2B',
-  },
-  logo: {
-    resizeMode: 'center',
-    // marginBottom: 0
-  },
-   loginText: {
-    fontSize: 18,
-    color: '#FFFFFF'
-  },
-  inputField: {
-    height: 40, 
-    width: 200,
-    borderColor: '#FFFFFF', 
-    borderWidth: 1,
-    borderRadius: 5,
-    marginTop: 10,
-    marginBottom: 20,
-    backgroundColor: '#FFFFFF'
-  },
-  loginButton: {
-    color: '#FFFFFF'
-  },
-  registerMessage: {
-    color: '#FFFFFF'
-  },
 
   // HOME
   container: {
@@ -64,6 +29,7 @@ var styles = StyleSheet.create({
     color: '#042A2B'
   },
 
+
   // PROFILE
   profile: {
     flex: 1,
@@ -76,13 +42,16 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: 350,
-    marginTop: 25
+    marginTop: 25,
+    borderTopWidth: 2,
+    borderTopColor: '#5EB1BF',
+    paddingTop: 10
   },
   quoteBlock: {
     width: 300,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: 'red',
+    backgroundColor: '#042A2B',
     borderRadius: 4,
     margin: 10,
     paddingHorizontal: 20,
@@ -90,28 +59,23 @@ var styles = StyleSheet.create({
   },
   profileQuote: {
     textAlign: 'center',
-    fontSize: 18
+    fontSize: 18,
+    color: '#FFFFFF'
   },
   profileAuthor: {
     textAlign: 'center',
     fontStyle: 'italic',
-    fontSize: 14,
-    color: 'grey'
+    fontSize: 16,
+    color: '#5EB1BF',
+    marginTop: 20
   },
- 
-  action: {
-    backgroundColor: constants.actionColor,
-    borderColor: 'transparent',
-    borderWidth: 1,
-    paddingLeft: 16,
-    paddingTop: 14,
-    paddingBottom: 16,
-  },
+  signOut: {
+    marginBottom: 15
+  }
 })
 
 
 module.exports = styles
-module.exports.constants = constants;
 
 /*
 Resources:
