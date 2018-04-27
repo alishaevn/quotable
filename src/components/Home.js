@@ -6,7 +6,7 @@ import firebase from 'firebase'
 import DoubleClick from 'react-native-double-click'
 
 import { firebaseApp } from '../config'
-import * as styles from '../styles'
+import * as styles from './homeStyles'
 
 const firebaseDb = firebaseApp.database().ref()
 

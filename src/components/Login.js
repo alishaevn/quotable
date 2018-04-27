@@ -2,7 +2,7 @@ import React, { Component} from 'react'
 import { Text, View, TextInput, Button, Image } from 'react-native'
 import firebase from 'firebase'
 
-import * as styles from '../styles'
+import * as styles from './loginStyles'
 
 
 export default class Login extends Component {
