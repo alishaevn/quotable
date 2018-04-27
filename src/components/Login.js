@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import { Text, View, TextInput, Button } from 'react-native'
+import { Text, View, TextInput, Button, Image } from 'react-native'
 import firebase from 'firebase'
 
 import * as styles from '../styles'
@@ -51,10 +51,12 @@ onRegister = () => {
           onPress={() => this.onRegister()}
           title="Register"
           accessibilityLabel="Register for Quotable"
+          style={styles.loginButton}
         />)
         registerMessage = (
         <Text
           onPress={() => this.setState({registering: false})}
+          style={styles.registerMessage}
         >
           Click here to Login
         </Text>)
@@ -63,26 +65,31 @@ onRegister = () => {
           onPress={() => this.onLogin()}
           title="Login"
           accessibilityLabel="Log in to Quotable"
+          style={styles.loginButton}
         />)
       registerMessage = (
         <Text
           onPress={() => this.setState({registering: true})}
+          style={styles.registerMessage}
         >
           Click here to register
         </Text>)
     }
 
     return(
-      <View style={styles.container}>
+      <View style={styles.loginPage}>
+        <Image 
+          source={require('../assets/logo.png')}
+          style={styles.logo} />
 
-        <Text style={styles.text}>Email</Text>
+        <Text style={styles.loginText}>Email</Text>
         <TextInput
           style={styles.inputField}
           onChangeText={(email) => this.setState({email})}
           value={this.state.email}
         />
 
-        <Text style={styles.text}>Password</Text>
+        <Text style={styles.loginText}>Password</Text>
         <TextInput
           style={styles.inputField}
           onChangeText={(password) => this.setState({password})}

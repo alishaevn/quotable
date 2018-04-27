@@ -6,12 +6,65 @@ const constants = {
 };
 
 var styles = StyleSheet.create({
+  // LOGIN
+  loginPage: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // marginHorizontal: 30,
+    backgroundColor: '#042A2B',
+  },
+  logo: {
+    resizeMode: 'center',
+    // marginBottom: 0
+  },
+   loginText: {
+    fontSize: 18,
+    color: '#FFFFFF'
+  },
+  inputField: {
+    height: 40, 
+    width: 200,
+    borderColor: '#FFFFFF', 
+    borderWidth: 1,
+    borderRadius: 5,
+    marginTop: 10,
+    marginBottom: 20,
+    backgroundColor: '#FFFFFF'
+  },
+  loginButton: {
+    color: '#FFFFFF'
+  },
+  registerMessage: {
+    color: '#FFFFFF'
+  },
+
+  // HOME
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 30
   },
+  homeQuote:{
+    fontSize: 30,
+    fontWeight: '400',
+    textAlign: 'center',
+    color: '#042A2B'
+  },
+  homeAuthor: {
+    fontSize: 18,
+    color: 'gray',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 50
+  },
+   heart: {
+    color: '#042A2B'
+  },
+
+  // PROFILE
   profile: {
     flex: 1,
     marginHorizontal: 20,
@@ -35,24 +88,9 @@ var styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 70
   },
-  text: {
-    fontSize: 18
-  },
-  homeQuote:{
-    fontSize: 30,
-    fontWeight: '400',
-    textAlign: 'center'
-  },
   profileQuote: {
     textAlign: 'center',
     fontSize: 18
-  },
-  homeAuthor: {
-    fontSize: 18,
-    color: 'gray',
-    fontStyle: 'italic',
-    textAlign: 'center',
-    marginTop: 20
   },
   profileAuthor: {
     textAlign: 'center',
@@ -60,12 +98,7 @@ var styles = StyleSheet.create({
     fontSize: 14,
     color: 'grey'
   },
-  inputField: {
-    height: 50, 
-    width: 200,
-    borderColor: 'gray', 
-    borderWidth: 1
-  },
+ 
   action: {
     backgroundColor: constants.actionColor,
     borderColor: 'transparent',
@@ -76,10 +109,12 @@ var styles = StyleSheet.create({
   },
 })
 
+
 module.exports = styles
 module.exports.constants = constants;
 
 /*
 Resources:
  - https://github.com/vhpoet/react-native-styling-cheat-sheet#text
+ - https://coolors.co/042a2b-5eb1bf-54f2f2-f4e04d-ffffff
 */
