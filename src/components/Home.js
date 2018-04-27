@@ -58,7 +58,6 @@ class Home extends Component {
       let objectToArray = Object.values(usersProp) // array of user objects
       let userQuotes = objectToArray.filter(obj => obj.uid === uid) // array of objects that the user added
       let found = userQuotes.find(obj => obj.quote === this.state.quote) // will be empty if the user hasn't liked the quote 
-
       if (found) {
         this.setState({
           clicked: true
@@ -87,7 +86,7 @@ class Home extends Component {
   render() {
 
     let iconName = this.state.clicked ? 'ios-heart' : 'ios-heart-outline'
-    let tintColor = this.state.clicked ? '#54F2F2' : ''
+    let tintColor = this.state.clicked ? '#5EB1BF' : ''
 
     return (
       <View style={styles.container} >
@@ -148,7 +147,12 @@ class Profile extends React.Component {
 
     return (
       <View style={styles.profile}>
-        <Text onPress={() => firebase.auth().signOut()}>Sign Out</Text>
+        <Text 
+          onPress={() => firebase.auth().signOut()}
+          style={styles.signOut}
+        >
+          Sign Out
+        </Text>
         <Text>Name: { name }</Text>
         {/* <Text>Email: { email}</Text> */}
         <Text>Photo: { photoUrl }</Text>
@@ -188,7 +192,7 @@ export default TabNavigator(
       },
       }),
       tabBarOptions: {
-        activeTintColor: 'tomato',
+        activeTintColor: '#5EB1BF',
         inactiveTintColor: 'gray',
       },
       tabBarComponent: TabBarBottom,
