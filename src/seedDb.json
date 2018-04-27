@@ -151,8 +151,19 @@
     }
   ],
   "users": [{
-    "quote": "necessary to seed the db",
-    "author": "necessary to seed the db",
-    "uid": "qwerty12345"
-  }]
+      "quote": "necessary to seed the db",
+      "author": "necessary to seed the db",
+      "uid": "qwerty12345"
+    },
+    {
+      "quote": "God can be a comfort when you're uncomfortable.",
+      "author": "Justin Carter",
+      "uid": "ZPWbxKNS0lPGVoaaWT7NESAQR6J3"
+    },
+    {
+      "quote": "Never give up on a dream just because of the time it will take to accomplish it. The time will pass anyway.",
+      "author": "Earl Nightingale",
+      "uid": "ZPWbxKNS0lPGVoaaWT7NESAQR6J3"
+    }
+  ]
 }
