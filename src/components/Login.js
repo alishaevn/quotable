@@ -85,6 +85,7 @@ onRegister = () => {
         <Text style={styles.loginText}>Email</Text>
         <TextInput
           style={styles.inputField}
+          autoCapitalize={'none'}
           onChangeText={(email) => this.setState({email})}
           value={this.state.email}
         />
@@ -92,6 +93,9 @@ onRegister = () => {
         <Text style={styles.loginText}>Password</Text>
         <TextInput
           style={styles.inputField}
+          maxLength={30}
+          secureTextEntry={true}
+          autoCapitalize={'none'}
           onChangeText={(password) => this.setState({password})}
           value={this.state.password}
         />
