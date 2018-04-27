@@ -19,7 +19,8 @@ class Home extends Component {
     super()
     this.state = {
       quote: '',
-      author: ''
+      author: '',
+      clicked: false
     }
   }
   
@@ -59,10 +60,16 @@ class Home extends Component {
         author: this.state.author,
         uid
       })
+
+    this.setState({
+      clicked: true
+    })
     
   }
 
   render() {
+
+    let iconName = this.state.clicked ? 'ios-heart' : 'ios-heart-outline'
 
     return (
       <View style={styles.container} >
@@ -70,6 +77,7 @@ class Home extends Component {
           <Text style={styles.quote}>{ this.state.quote }</Text>
           <Text style={styles.author}>{ this.state.author }</Text>
         </DoubleClick>
+        <Ionicons name={iconName} size={25} />
       </View>
     );
   }
@@ -166,10 +174,12 @@ export default TabNavigator(
       swipeEnabled: false,
     });
 
+    
 /*
 Resources: 
   // HOME
   - https://www.npmjs.com/package/react-native-double-click
+  - https://firebase.google.com/docs/database/web/read-and-write
 
   // PROFILE
   - https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#signOut
