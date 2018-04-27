@@ -147,15 +147,17 @@ class Profile extends React.Component {
 
     return (
       <View style={styles.profile}>
-        <Text 
-          onPress={() => firebase.auth().signOut()}
-          style={styles.signOut}
-        >
-          Sign Out
-        </Text>
-        <Text>Name: { name }</Text>
-        {/* <Text>Email: { email}</Text> */}
-        <Text>Photo: { photoUrl }</Text>
+        <View style={styles.header}>
+          <Text 
+            onPress={() => firebase.auth().signOut()}
+            style={styles.signOut}
+          >
+            Sign Out
+          </Text>
+          <Text>{ name }</Text>
+          {/* <Text>Email: { email}</Text> */}
+          <Text>{ photoUrl }</Text>
+        </View>
 
         <View style={styles.quotesBox}>
           <ScrollView>
