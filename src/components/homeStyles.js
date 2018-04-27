@@ -33,34 +33,39 @@ var styles = StyleSheet.create({
   // PROFILE
   profile: {
     flex: 1,
-    marginHorizontal: 20,
-    marginVertical: 50,
+    
+    backgroundColor: '#5EB1BF'
+  },
+  header: {
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 20,
+    paddingVertical: 50,
   },
   quotesBox: {
+    flex: 2,
+    paddingLeft: 25,
     justifyContent: 'center',
-    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: 350,
     marginTop: 25,
-    borderTopWidth: 2,
-    borderTopColor: '#5EB1BF',
+    backgroundColor: '#5EB1BF',
+ 
     paddingTop: 10
   },
   quoteBlock: {
     width: 300,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    backgroundColor: '#042A2B',
+    justifyContent: 'center',
+    backgroundColor: '#FFFFFF',
     borderRadius: 4,
     margin: 10,
+    height: 200,
     paddingHorizontal: 20,
-    paddingVertical: 70
   },
   profileQuote: {
     textAlign: 'center',
     fontSize: 18,
-    color: '#FFFFFF'
+    color: '#042A2B'
   },
   profileAuthor: {
     textAlign: 'center',
