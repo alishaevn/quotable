@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { Text, View, ScrollView } from 'react-native'
 import { TabNavigator, TabBarBottom } from 'react-navigation'
 import { Ionicons } from 'react-native-vector-icons'
-import firebase from 'firebase'
+// import firebase from 'firebase'
 import DoubleClick from 'react-native-double-click'
 
-import { firebaseApp } from '../config'
+// import { firebaseApp } from '../config'
 import * as styles from './homeStyles'
 
-const firebaseDb = firebaseApp.database().ref()
+// const firebaseDb = firebaseApp.database().ref()
 
 
 /* ======================
@@ -23,9 +23,9 @@ class Home extends Component {
       clicked: false
     }
   }
-  
+
   componentDidMount() {
-    
+
     const todayString = () => {
       let today = new Date();
       let dd = today.getDate();
@@ -43,44 +43,44 @@ class Home extends Component {
 
     const today = todayString()
 
-    firebaseDb.on('value', snap => { // snap.val() will show me my current database
-      // FIND THE QUOTE OF THE DAY
-      const qotd =  snap.val().qotd.find(obj => obj.date === today)
+    // firebaseDb.on('value', snap => { // snap.val() will show me my current database
+    //   // FIND THE QUOTE OF THE DAY
+    //   const qotd =  snap.val().qotd.find(obj => obj.date === today)
 
-      this.setState({
-        quote: qotd.quote,
-        author: qotd.author
-      })
+    //   this.setState({
+    //     quote: qotd.quote,
+    //     author: qotd.author
+    //   })
 
-      // CHECK TO SEE IF THE USER HAS LIKED THIS QUOTE
-      const uid = firebase.auth().currentUser.uid
-      let usersProp =  snap.val().users // entire users object
-      let objectToArray = Object.values(usersProp) // array of user objects
-      let userQuotes = objectToArray.filter(obj => obj.uid === uid) // array of objects that the user added
-      let found = userQuotes.find(obj => obj.quote === this.state.quote) // will be empty if the user hasn't liked the quote 
-      if (found) {
-        this.setState({
-          clicked: true
-        })
-      }
+    //   // CHECK TO SEE IF THE USER HAS LIKED THIS QUOTE
+    //   // const uid = firebase.auth().currentUser.uid
+    //   let usersProp =  snap.val().users // entire users object
+    //   let objectToArray = Object.values(usersProp) // array of user objects
+    //   let userQuotes = objectToArray.filter(obj => obj.uid === uid) // array of objects that the user added
+    //   let found = userQuotes.find(obj => obj.quote === this.state.quote) // will be empty if the user hasn't liked the quote
+    //   if (found) {
+    //     this.setState({
+    //       clicked: true
+    //     })
+    //   }
 
-    })
+    // })
   }
 
   // SAVE THE QUOTE TO THE DB WITH THE USER'S ID
   saveQuote = () => {
-    const uid = firebase.auth().currentUser.uid
-    
-    firebaseDb.child('users').push({ 
-        quote: this.state.quote,
-        author: this.state.author,
-        uid
-      })
+    // const uid = firebase.auth().currentUser.uid
+
+    // firebaseDb.child('users').push({
+    //     quote: this.state.quote,
+    //     author: this.state.author,
+    //     uid
+    //   })
 
     this.setState({
       clicked: true
     })
-    
+
   }
 
   render() {
@@ -114,21 +114,21 @@ class Profile extends React.Component {
 
   componentDidMount() {
     // RETRIEVE USER'S QUOTES
-    firebaseDb.on('value', snap => { 
-      const uid = firebase.auth().currentUser.uid
+    // firebaseDb.on('value', snap => {
+    //   const uid = firebase.auth().currentUser.uid
 
-      let usersProp =  snap.val().users // entire users object
-      let objectToArray = Object.values(usersProp) // array of user objects
-      let userQuotes = objectToArray.filter(obj => obj.uid === uid) // array of objects that the user added
+    //   let usersProp =  snap.val().users // entire users object
+    //   let objectToArray = Object.values(usersProp) // array of user objects
+    //   let userQuotes = objectToArray.filter(obj => obj.uid === uid) // array of objects that the user added
 
-      this.setState({
-        userQuotes
-      })
-    })
+    //   this.setState({
+    //     userQuotes
+    //   })
+    // })
   }
 
   render() {
-    const user = firebase.auth().currentUser
+    // const user = firebase.auth().currentUser
     let name, photoUrl /* email */
 
     if (user !== null) {
@@ -148,8 +148,8 @@ class Profile extends React.Component {
     return (
       <View style={styles.profile}>
         <View style={styles.header}>
-          <Text 
-            onPress={() => firebase.auth().signOut()}
+          <Text
+            // onPress={() => firebase.auth().signOut()}
             style={styles.signOut}
           >
             Sign Out
@@ -205,18 +205,12 @@ export default TabNavigator(
 
 
 /*
-Resources: 
+Resources:
   // HOME
   - https://www.npmjs.com/package/react-native-double-click
-  - https://firebase.google.com/docs/database/web/read-and-write
 
-  // PROFILE
-  - https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#signOut
-  - https://firebase.google.com/docs/auth/web/manage-users
-  
   // TABS
   - https://reactnavigation.org/docs/tab-based-navigation.html
   - https://oblador.github.io/react-native-vector-icons/
   - http://discuss.nativebase.io/t/where-to-get-the-list-of-icon-names-used-in-native-base/37/8
-
 */

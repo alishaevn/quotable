@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { Text, View, TextInput, Button, Image } from 'react-native'
-import firebase from 'firebase'
+// import firebase from 'firebase'
 
 import * as styles from './loginStyles'
 
@@ -15,34 +15,34 @@ export default class Login extends Component {
 
   onLogin = () => {
   const { email, password } = this.state;
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .catch((error) => {
-      const { code, message } = error;
-      // The message contains the default Firebase string representation of the error
-      if (code === 'auth/wrong-password') {
-        alert('Wrong password.');
-      } else {
-        alert(message);
-      }
-    });
+  // firebase.auth().signInWithEmailAndPassword(email, password)
+  //   .catch((error) => {
+  //     const { code, message } = error;
+  //     // The message contains the default Firebase string representation of the error
+  //     if (code === 'auth/wrong-password') {
+  //       alert('Wrong password.');
+  //     } else {
+  //       alert(message);
+  //     }
+  //   });
 }
 
 onRegister = () => {
   const { email, password } = this.state;
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .catch((error) => {
-      const { code, message } = error;
-      // The message contains the default Firebase string representation of the error
-      if (code === 'auth/weak-password') {
-        alert('The password is too weak.');
-      } else {
-        alert(message);
-      }
-    });
+  // firebase.auth().createUserWithEmailAndPassword(email, password)
+  //   .catch((error) => {
+  //     const { code, message } = error;
+  //     // The message contains the default Firebase string representation of the error
+  //     if (code === 'auth/weak-password') {
+  //       alert('The password is too weak.');
+  //     } else {
+  //       alert(message);
+  //     }
+  //   });
 }
 
   render() {
-   
+
     let button;
     let registerMessage;
 
@@ -78,7 +78,7 @@ onRegister = () => {
 
     return(
       <View style={styles.loginPage}>
-        <Image 
+        <Image
           source={require('../assets/logo.png')}
           style={styles.logo} />
 
@@ -106,15 +106,9 @@ onRegister = () => {
       </View>
     )
   }
-
 }
 
 /*
- Resources:
- - https://blog.invertase.io/getting-started-with-firebase-authentication-on-react-native-a1ed3d2d6d91
-
- - https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0#createUserWithEmailAndPassword
-
- - https://facebook.github.io/react-native/docs/components-and-apis.html
-  
- */
+Resources:
+  - https://facebook.github.io/react-native/docs/components-and-apis.html
+*/
