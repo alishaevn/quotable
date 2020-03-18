@@ -1,10 +1,4 @@
 {
-  "expo": {
-    "sdkVersion": "26.0.0",
-    "splash": {
-      "image": "./src/assets/splash.png",
-      "backgroundColor": "#4EE559",
-      "resizeMode": "cover"
-    }
-  }
+  "displayName": "Quotable",
+  "name": "quotable"
 }
